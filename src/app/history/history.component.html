@@ -1,0 +1,9 @@
+<div class="container-fluid">
+    <div class="container" *ngFor="let conversion of history.reverse()">
+
+        <div class="row">
+            <div class="col-4 conversion-style">{{conversion.amount}} {{conversion.fromCurrency}} was {{conversion.convertedAmount}} {{conversion.toCurrency}}</div>
+        </div>
+
+    </div>
+</div>

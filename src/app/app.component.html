@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="title">Currency Converter</div>
+    </div>
+  </div>
+  <div class="conversion_error" *ngIf="validationErrors">
+    {{validationErrors}}
+  </div>
+  <form class="form-group" [formGroup]="conversionFormGrp">
+    <div class="row">
+      <div class="form-group col-md-3">
+        <input class="form-control" formControlName="amount" type="text">
+        <div *ngIf="amount.invalid && (amount.dirty || amount.touched)">
+          <span *ngIf="amount.errors.required" class="conversion_error">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="form-group col-md-3">
+        <select class="form-control" formControlName="fromCurrency">
+          <option *ngFor="let currency of currencyList" [value]="currency">{{currency}}</option>
+        </select>
+        <div *ngIf="fromCurrency.invalid && (fromCurrency.dirty || fromCurrency.touched)">
+          <span *ngIf="fromCurrency.errors.required" class="conversion_error">
+            Required
+          </span>
+        </div>
+      </div>
+      <div class="form-group col-md-3">
+        <select class="form-control" formControlName="toCurrency">
+          <option *ngFor="let currency of currencyList" [value]="currency">{{currency}}</option>
+        </select>
+        <div *ngIf="toCurrency.invalid && (toCurrency.dirty || toCurrency.touched)">
+          <span *ngIf="toCurrency.errors.required" class="conversion_error">
+            Required
+          </span>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="row" style="padding-left: 15px">
+    <button type="button" class="btn btn-primary" (click)="convert()">Convert</button>
+  </div>
+</div>
+<br>
+<br>
+<app-history [history]="convertedCurrencyList"></app-history>

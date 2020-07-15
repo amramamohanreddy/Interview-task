@@ -1,0 +1,12 @@
+ 
+.conversion_error {
+    margin: 10px 0px;
+    padding:12px;
+    color: #D8000C;
+}
+.title{
+    margin: 10px 0px;
+    padding:12px;
+    color: green;
+    font-size: 22px;
+}
